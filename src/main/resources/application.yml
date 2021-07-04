@@ -8,7 +8,7 @@ spring:
   jpa:
     # database-platform: org.hibernate.dialect.Oracle12cDialect
     database-platform: org.hibernate.dialect.H2Dialect
-    # Alyaws disable it. It's anti-pattern.
+    # Always disable it. It's anti-pattern.
     open-in-view: false
     hibernate:
       ddl-auto: create-drop
