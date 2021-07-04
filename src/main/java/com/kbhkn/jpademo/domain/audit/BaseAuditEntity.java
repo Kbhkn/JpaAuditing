@@ -6,31 +6,43 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
+ * Who created it, who changed it, when?.
+ *
  * @author Hakan KABASAKAL, 30-Mar-20
  */
 @Getter
 @Setter
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class BaseAuditEntity {
-    @Column(nullable = false, updatable = false)
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+
+    /* Who creates this row? */
     @CreatedBy
-    private String createdBy;
-
     @Column(nullable = false, updatable = false)
+    protected String createdBy;
+
+    /* When was this row created? */
     @CreatedDate
-    private LocalDateTime createdDate;
+    @Column(nullable = false, updatable = false)
+    protected LocalDateTime createdDate;
 
-    @Column(nullable = false)
+    /* Who updates this row? */
+    @Column
     @LastModifiedBy
-    private String lastModifiedBy;
+    protected String lastModifiedBy;
 
-    @Column(nullable = false)
+    /* When was this row updated? */
+    @Column
     @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+    protected LocalDateTime lastModifiedDate;
 }

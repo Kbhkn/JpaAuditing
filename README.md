@@ -1,14 +1,14 @@
 ## User - Role - Action Table Desing with Hibernate Envers(Auditing) Example
 
 #### Abstract
-* Auditing needs for history of transactions.
+* Auditing shows who made the transactions and when.
 * Contains an example hibernate envers ops.
 * I have provided an example user-role-action definition:
 
   ![alt text](files/table_design.PNG)
 
-* Finally, There is have an example auditing with archive schema.
-* Always store it auditing tables into the another schema. It is recommended!
+* Finally, there is an example of auditing with archive schema.
+* Always store auditing tables on another schema. It is recommended!
 
   ![alt text](files/Revision.PNG)
 
